@@ -1,0 +1,32 @@
+import ly.generalassemb.de.dataservices.model.TemplateReferenceRequest
+import ly.generalassemb.de.dataservices.model.TemplateReferenceResponse
+import ly.generalassemb.de.dataservices.constants.Metro
+import ly.generalassemb.de.dataservices.model.TemplateReference
+import ly.generalassemb.de.dataservices.constants.ProgramFormat
+import ly.generalassemb.de.dataservices.constants.PaymentOption
+
+import java.util.List
+import ly.generalassemb.de.dataservices.constants.TemplateType
+import java.util.Collections
+
+global ly.generalassemb.de.dataservices.model.TemplateReferenceResponse response;
+dialect  "mvel"
+
+rule "2018_LON_EA_Standard Payment"
+    when
+        $r:TemplateReferenceRequest(programFormat==ProgramFormat.IMMERSIVE && metro==Metro.LONDON && paymentOption==PaymentOption.STANDARD)
+    then
+        TemplateReference ea = new TemplateReference();
+        ea.setTemplate("ea7b5b6c-1fda-4733-ab67-b92240353434,2018_LON_EA_Standard Payment");
+        response.setTemplateReferenceList(Collections.singletonList(ea));
+
+end
+
+rule "2018_LON_EA_Extended Payment"
+    when
+        $r:TemplateReferenceRequest(programFormat==ProgramFormat.IMMERSIVE && metro==Metro.LONDON && paymentOption==PaymentOption.EXTENDED)
+    then
+        TemplateReference ea = new TemplateReference();
+        ea.setTemplate("078a1ec1-54aa-4dc7-a888-d8e8a23c8b35,2018_LON_EA_Extended Payment");
+        response.setTemplateReferenceList(Collections.singletonList(ea));
+end
