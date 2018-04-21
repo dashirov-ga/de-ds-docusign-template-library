@@ -1,4 +1,4 @@
-FROM dockerfile/java:oracle-java8
+FROM java:9-jdk
 
 VOLUME /tmp
 ADD de-ds-docusign-template-library.jar /opt/de-ds-docusign-template-library/
