@@ -1,5 +1,6 @@
 package ly.generalassemb.de.dataservices;
 
+import ly.generalassemb.de.dataservices.api.TemplateLibraryService;
 import ly.generalassemb.de.dataservices.constants.Metro;
 import ly.generalassemb.de.dataservices.constants.PaymentOption;
 import ly.generalassemb.de.dataservices.constants.ProgramFormat;
@@ -16,7 +17,7 @@ import java.time.LocalDateTime;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = TemplateLibraryConfiguration.class)
-public class ServiceTest {
+public class TemplateLibraryServiceTest {
 
     @Autowired
     private TemplateLibraryService templateLibraryService;

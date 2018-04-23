@@ -1,5 +1,7 @@
 package ly.generalassemb.de.dataservices;
 
+import ly.generalassemb.de.dataservices.api.TemplateLibraryService;
+import ly.generalassemb.de.dataservices.api.TemplateLibraryWebService;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieBuilder;
 import org.kie.api.builder.KieFileSystem;
@@ -7,7 +9,6 @@ import org.kie.api.builder.KieModule;
 import org.kie.api.runtime.KieContainer;
 import org.kie.internal.io.ResourceFactory;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -15,7 +16,6 @@ import org.springframework.context.annotation.Configuration;
  * instantiating the TemplateLibraryService bean and its dependencies:
  */
 @Configuration
-@ComponentScan("ly.generalassemb.de.dataservices")
 public class TemplateLibraryConfiguration {
     private static final String drlFile = "RESOLUTION_RULES.drl";
 
@@ -46,5 +46,19 @@ public class TemplateLibraryConfiguration {
         // required to define rule knowledge known as KieBase.
         KieModule kieModule = kieBuilder.getKieModule();
         return kieServices.newKieContainer(kieModule.getReleaseId());
+    }
+
+    @Bean
+    TemplateLibraryService templateLibraryService(KieContainer kieContainer){
+        TemplateLibraryService templateLibraryService=new TemplateLibraryService();
+        templateLibraryService.setKieContainer(kieContainer);
+        return templateLibraryService;
+    }
+
+    @Bean
+    public TemplateLibraryWebService templateLibraryWebService(TemplateLibraryService templateLibraryService){
+        TemplateLibraryWebService templateLibraryWebService = new TemplateLibraryWebService();
+        templateLibraryWebService.setTemplateLibraryService(templateLibraryService);
+        return templateLibraryWebService;
     }
 }
