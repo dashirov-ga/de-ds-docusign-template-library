@@ -38,8 +38,6 @@ public class TemplateLibraryConfiguration {
         // KieServices is a singleton which acts as a single point
         // entry to get all services provided by Kie.
         KieServices kieServices = KieServices.Factory.get();
-
-
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
         kieFileSystem.write(ResourceFactory.newClassPathResource(drlFile));
         KieBuilder kieBuilder = kieServices.newKieBuilder(kieFileSystem);
@@ -47,7 +45,6 @@ public class TemplateLibraryConfiguration {
         // create a KieModule which is a container of all the resources which are
         // required to define rule knowledge known as KieBase.
         KieModule kieModule = kieBuilder.getKieModule();
-
         return kieServices.newKieContainer(kieModule.getReleaseId());
     }
 }
