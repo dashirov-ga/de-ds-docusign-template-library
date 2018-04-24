@@ -1,5 +1,7 @@
 package ly.generalassemb.de.dataservices.constants;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TimeZone;
 
 /**
@@ -97,5 +99,15 @@ public enum Metro {
         return metroTz;
     }
 
+    private static final Map<String,Metro> map;
+    static {
+        map = new HashMap<>();
+        for (Metro v : Metro.values()) {
+            map.put(v.metroName, v);
+        }
+    }
+    public static Metro findByName(String metroName) {
+        return map.get(metroName);
+    }
 
 }

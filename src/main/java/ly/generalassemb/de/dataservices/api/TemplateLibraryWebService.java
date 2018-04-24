@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 public class TemplateLibraryWebService {
     private static Logger LOGGER = LoggerFactory.getLogger(TemplateLibraryWebService.class);
 
-    private static ObjectMapper mapper = new ObjectMapper();
+    private static final ObjectMapper mapper = new ObjectMapper();
 
     TemplateLibraryService templateLibraryService;
 
