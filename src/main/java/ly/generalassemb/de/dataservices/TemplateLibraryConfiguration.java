@@ -69,9 +69,12 @@ public class TemplateLibraryConfiguration {
     }
 
     @Bean
-    public TemplateLibraryWebService templateLibraryWebService(TemplateLibraryService templateLibraryService){
+    public TemplateLibraryWebService templateLibraryWebService(TemplateLibraryService templateLibraryService,
+                                                               SkuLookupService skuLookupService
+    ){
         TemplateLibraryWebService templateLibraryWebService = new TemplateLibraryWebService();
         templateLibraryWebService.setTemplateLibraryService(templateLibraryService);
+        templateLibraryWebService.setSkuLookupService(skuLookupService);
         return templateLibraryWebService;
     }
 

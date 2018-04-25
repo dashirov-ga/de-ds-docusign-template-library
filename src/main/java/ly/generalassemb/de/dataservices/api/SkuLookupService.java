@@ -7,12 +7,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 import java.util.Map;
 import java.util.Optional;
 
 @EnableAutoConfiguration
+@Service
 public class SkuLookupService implements InitializingBean {
     private static Logger LOGGER = LoggerFactory.getLogger(SkuLookupService.class);
     InstanceCache cache = new InstanceCache();
