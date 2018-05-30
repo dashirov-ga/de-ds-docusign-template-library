@@ -88,3 +88,10 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
+.idea/compiler.xml
+.idea/encodings.xml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/vcs.xml
+de-ds-docusign-template-library.iml
+src/main/java/ly/generalassemb/de/dataservices/configuration/
