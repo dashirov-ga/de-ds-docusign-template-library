@@ -22,7 +22,7 @@ import java.sql.ResultSet;
 
 @PropertySource("classpath:application.properties")
 @TestPropertySource("classpath:application.properties")                              //critical
-@EnableAutoConfiguration                                                             //critical
+@EnableAutoConfiguration                                                            //critical
 public class DataSourceTest {
     private final Logger LOGGER = LoggerFactory.getLogger(DataSourceTest.class);
     @Autowired
