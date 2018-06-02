@@ -20,4 +20,16 @@ public class TemplateReference {
     public void setPayload(Object payload) {
         this.payload = payload;
     }
+
+    public TemplateReference() {
+    }
+
+    public TemplateReference(String template) {
+        this.template = template;
+    }
+
+    public TemplateReference(String template, Object payload) {
+        this.template = template;
+        this.payload = payload;
+    }
 }

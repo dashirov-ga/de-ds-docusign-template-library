@@ -4,8 +4,8 @@ import ly.generalassemb.de.dataservices.api.TemplateLibraryService;
 import ly.generalassemb.de.dataservices.constants.Metro;
 import ly.generalassemb.de.dataservices.constants.PaymentOption;
 import ly.generalassemb.de.dataservices.constants.ProgramFormat;
-import ly.generalassemb.de.dataservices.model.TemplateReferenceInquiry;
-import ly.generalassemb.de.dataservices.model.TemplateReferenceRequest;
+import ly.generalassemb.de.dataservices.constants.State;
+import ly.generalassemb.de.dataservices.model.*;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,20 +30,16 @@ public class TemplateLibraryServiceTest {
     @Test
     public void templatesTest(){
 
+        Person person = new Person();
+        person.setStateOfResidence(State.CALIFORNIA);
+        Instance instance = new Instance();
+        instance.setStockKeepingUnit("43466");
 
-        TemplateReferenceRequest request = new TemplateReferenceRequest();
-        request.setMetro(Metro.LONDON);
-        request.setProgramFormat(ProgramFormat.IMMERSIVE);
-        request.setPaymentOption(PaymentOption.EXTENDED);
-        request.setRequestedAt(LocalDateTime.now());
 
-        TemplateReferenceInquiry inquiry = new TemplateReferenceInquiry();
-        inquiry.setRequest(request);
-        inquiry = templateLibraryService.retrieveTemplateReferences(inquiry);
+        TemplateReferenceResponse outcome = templateLibraryService.retrieveTemplateReferences(person,instance);
+        Assert.assertNotNull(outcome);
 
-        Assert.assertNotNull(inquiry);
-
-        Assert.assertNotNull(inquiry.getInquiryId());
+        Assert.assertNotNull(outcome.getTemplateReferenceList());
 
     }
 

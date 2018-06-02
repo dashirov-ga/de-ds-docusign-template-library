@@ -1,24 +1,20 @@
 package ly.generalassemb.de.dataservices;
 
-import ly.generalassemb.de.dataservices.api.SkuLookupService;
 import ly.generalassemb.de.dataservices.api.TemplateLibraryService;
 import ly.generalassemb.de.dataservices.api.TemplateLibraryWebService;
+import ly.generalassemb.de.dataservices.components.SimpleInstanceRepository;
+import ly.generalassemb.de.dataservices.model.InstanceRepository;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieBuilder;
 import org.kie.api.builder.KieFileSystem;
 import org.kie.api.builder.KieModule;
 import org.kie.api.runtime.KieContainer;
 import org.kie.internal.io.ResourceFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.jdbc.core.JdbcTemplate;
-
-import javax.sql.DataSource;
 
 /**
  * Spring bean configuration class – which will be responsible for
@@ -29,8 +25,6 @@ import javax.sql.DataSource;
 @PropertySource("classpath:application.properties")
 public class TemplateLibraryConfiguration {
     private static final String drlFile = "RESOLUTION_RULES.drl";
-
-
 
     /**
      *
@@ -70,20 +64,18 @@ public class TemplateLibraryConfiguration {
 
     @Bean
     public TemplateLibraryWebService templateLibraryWebService(TemplateLibraryService templateLibraryService,
-                                                               SkuLookupService skuLookupService
+                                                               InstanceRepository instanceRepository
     ){
         TemplateLibraryWebService templateLibraryWebService = new TemplateLibraryWebService();
         templateLibraryWebService.setTemplateLibraryService(templateLibraryService);
-        templateLibraryWebService.setSkuLookupService(skuLookupService);
+        templateLibraryWebService.setInstanceRepository(instanceRepository);
         return templateLibraryWebService;
     }
 
-
-
     @Bean
-    public SkuLookupService skuLookupService(JdbcTemplate jdbcTemplate){
-        SkuLookupService skuLookupService = new SkuLookupService();
-        skuLookupService.setDataSource(jdbcTemplate.getDataSource());
-        return skuLookupService;
+    public SimpleInstanceRepository instanceRepository(JdbcTemplate jdbcTemplate){
+        SimpleInstanceRepository instanceRepository = new SimpleInstanceRepository();
+        instanceRepository.setJdbcTemplate(jdbcTemplate);
+        return instanceRepository;
     }
 }

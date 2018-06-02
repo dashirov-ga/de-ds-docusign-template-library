@@ -3,6 +3,7 @@ package ly.generalassemb.de.dataservices.model;
 import ly.generalassemb.de.dataservices.constants.Metro;
 import ly.generalassemb.de.dataservices.constants.PaymentOption;
 import ly.generalassemb.de.dataservices.constants.ProgramFormat;
+import ly.generalassemb.de.dataservices.constants.State;
 
 import java.time.LocalDateTime;
 
@@ -18,6 +19,33 @@ public class TemplateReferenceRequest {
     private PaymentOption paymentOption;
     private ProgramFormat programFormat;
     private LocalDateTime requestedAt;
+    private String programAbbreviation;
+    private Boolean isFactSheetRequired = false;
+    private State usState;
+
+    public State getUsState() {
+        return usState;
+    }
+
+    public void setUsState(State usState) {
+        this.usState = usState;
+    }
+
+    public void setFactSheetRequired(Boolean factSheetRequired) {
+        isFactSheetRequired = factSheetRequired;
+    }
+
+    public Boolean getFactSheetRequired() {
+        return isFactSheetRequired;
+    }
+
+    public String getProgramAbbreviation() {
+        return programAbbreviation;
+    }
+
+    public void setProgramAbbreviation(String programAbbreviation) {
+        this.programAbbreviation = programAbbreviation;
+    }
 
     public Metro getMetro() {
         return metro;

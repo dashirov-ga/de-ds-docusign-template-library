@@ -1,35 +1,306 @@
 package docusign
-dialect  "mvel"
+dialect  "java"
 
-import ly.generalassemb.de.dataservices.model.TemplateReferenceInquiry
-import ly.generalassemb.de.dataservices.model.TemplateReferenceRequest
-import ly.generalassemb.de.dataservices.model.TemplateReferenceResponse
-import ly.generalassemb.de.dataservices.model.TemplateReference
+ //generated from Decision Table
+ import ly.generalassemb.de.dataservices.model.Person;
+ import ly.generalassemb.de.dataservices.model.Instance;
+ import ly.generalassemb.de.dataservices.model.TemplateReferenceResponse;
+ import ly.generalassemb.de.dataservices.constants.ProgramFormat;
+ import ly.generalassemb.de.dataservices.constants.State;
+ import ly.generalassemb.de.dataservices.model.TemplateReference;
+ import java.util.Collections;
 
-import ly.generalassemb.de.dataservices.constants.Metro
-import ly.generalassemb.de.dataservices.constants.ProgramFormat
-import ly.generalassemb.de.dataservices.constants.PaymentOption
+import java.util.ArrayList;
 
-import java.util.List
-import java.util.Collections
+ rule "EA_11"
+ 	salience 65535
+ 	no-loop
+ 	when
+ 		$person:Person(stateOfResidence==State.COLORADO) //stateOfResidence == "COLORADO"
+ 	    $instance:Instance(programFormat.equals("CIRCUIT")) //programFormat == "CIRCUIT"
+ 		$response:TemplateReferenceResponse()
+
+ 	then
+
+ 	    ArrayList<TemplateReference> templateReferenceList = new ArrayList<>();
+ 	    templateReferenceList.add(new TemplateReference("CO_Circuits_EA_05.30.2018"));
+ 	    $response.setIncludeFactSheet(false);
+ 	    $response.setEnrollmentAuthorized(true);
+ 	    $response.setTemplateReferenceList(Collections.synchronizedList(templateReferenceList));
+ 	    update($response);
+ end
+
+  rule "EA_12"
+  	salience 65535
+  	no-loop
+  	when
+  		$person:Person(stateOfResidence==State.DISTRICT_OF_COLUMBIA)
+  	    $instance:Instance(programFormat.equals("CIRCUIT"))
+  		$response:TemplateReferenceResponse()
+
+  	then
+
+  	    ArrayList<TemplateReference> templateReferenceList = new ArrayList<>();
+  	    templateReferenceList.add(new TemplateReference("DC_Circuits_EA_05.30.2018"));
+  	    $response.setIncludeFactSheet(false);
+  	    $response.setEnrollmentAuthorized(true);
+  	    $response.setTemplateReferenceList(Collections.synchronizedList(templateReferenceList));
+  	    update($response);
+  end
+
+    rule "EA_13"
+    	salience 65535
+    	no-loop
+    	when
+    		$person:Person(stateOfResidence==State.TEXAS)
+    	    $instance:Instance(programFormat.equals("CIRCUIT"))
+    		$response:TemplateReferenceResponse()
+    	then
+    	    ArrayList<TemplateReference> templateReferenceList = new ArrayList<>();
+    	    templateReferenceList.add(new TemplateReference("TX_Circuits_EA_05.30.2018"));
+    	    $response.setIncludeFactSheet(false);
+    	    $response.setEnrollmentAuthorized(true);
+    	    $response.setTemplateReferenceList(Collections.synchronizedList(templateReferenceList));
+    	    update($response);
+    end
+    rule "EA_14"
+    	salience 65535
+    	no-loop
+    	when
+    		$person:Person(stateOfResidence==State.MASSACHUSETTS)
+    	    $instance:Instance(programFormat.equals("CIRCUIT"))
+    		$response:TemplateReferenceResponse()
+    	then
+    	    ArrayList<TemplateReference> templateReferenceList = new ArrayList<>();
+    	    templateReferenceList.add(new TemplateReference("MA_Circuits_EA_05.30.2018"));
+    	    $response.setIncludeFactSheet(false);
+    	    $response.setEnrollmentAuthorized(true);
+    	    $response.setTemplateReferenceList(Collections.synchronizedList(templateReferenceList));
+    	    update($response);
+    end
+
+    rule "EA_15"
+    	salience 65535
+    	no-loop
+    	when
+    		$person:Person(stateOfResidence==State.ILLINOIS)
+    	    $instance:Instance(programFormat.equals("CIRCUIT"))
+    		$response:TemplateReferenceResponse()
+    	then
+    	    ArrayList<TemplateReference> templateReferenceList = new ArrayList<>();
+    	    templateReferenceList.add(new TemplateReference("IL_Circuits_EA_05.30.2018"));
+    	    $response.setIncludeFactSheet(false);
+    	    $response.setEnrollmentAuthorized(true);
+    	    $response.setTemplateReferenceList(Collections.synchronizedList(templateReferenceList));
+    	    update($response);
+    end
+
+    rule "EA_16"
+    	salience 65535
+    	no-loop
+    	when
+    		$person:Person(stateOfResidence==State.NEW_YORK)
+    	    $instance:Instance(programFormat.equals("CIRCUIT"))
+    		$response:TemplateReferenceResponse()
+    	then
+    	    ArrayList<TemplateReference> templateReferenceList = new ArrayList<>();
+    	    templateReferenceList.add(new TemplateReference("NY_Circuits_EA_05.30.2018"));
+    	    $response.setIncludeFactSheet(false);
+    	    $response.setEnrollmentAuthorized(true);
+    	    $response.setTemplateReferenceList(Collections.synchronizedList(templateReferenceList));
+    	    update($response);
+    end
+
+    rule "EA_17"
+    	salience 65535
+    	no-loop
+    	when
+    		$person:Person(stateOfResidence==State.WASHINGTON)
+    	    $instance:Instance(programFormat.equals("CIRCUIT"))
+    		$response:TemplateReferenceResponse()
+    	then
+    	    ArrayList<TemplateReference> templateReferenceList = new ArrayList<>();
+    	    templateReferenceList.add(new TemplateReference("WA_Circuits_EA_05.30.2018"));
+    	    $response.setIncludeFactSheet(false);
+    	    $response.setEnrollmentAuthorized(true);
+    	    $response.setTemplateReferenceList(Collections.synchronizedList(templateReferenceList));
+    	    update($response);
+    end
+
+   rule "EA_18"
+    	salience 65535
+    	no-loop
+    	when
+    		$person:Person(stateOfResidence==State.CALIFORNIA)
+    	    $instance:Instance(programFormat.equals("CIRCUIT"))
+    		$response:TemplateReferenceResponse()
+    	then
+    	    ArrayList<TemplateReference> templateReferenceList = new ArrayList<>();
+    	    templateReferenceList.add(new TemplateReference("CA_Circuits_EA_05.30.2018"));
+    	    $response.setIncludeFactSheet(true);
+    	    $response.setEnrollmentAuthorized(true);
+    	    $response.setTemplateReferenceList(Collections.synchronizedList(templateReferenceList));
+    	    update($response);
+    end
 
 
+   rule "EA_19"
+    	salience 65535
+    	no-loop
+    	when
+    		$person:Person(stateOfResidence==State.UTAH)
+    		$response:TemplateReferenceResponse()
+    	then
+    	    $response.setIncludeFactSheet(false);
+    	    $response.setEnrollmentAuthorized(false);
+    	    $response.setTemplateReferenceList(Collections.unmodifiableList(Collections.emptyList()));
+    	    update($response);
+    end
 
-rule "2018_LON_EA_Standard Payment"
-    when
-        inquiry:TemplateReferenceInquiry(request!=null && request.programFormat==ProgramFormat.IMMERSIVE && request.metro==Metro.LONDON && request.paymentOption==PaymentOption.STANDARD)
-    then
-        TemplateReference ea = new TemplateReference();
-        ea.setTemplate("ea7b5b6c-1fda-4733-ab67-b92240353434,2018_LON_EA_Standard Payment");
-        inquiry.getResponse().getTemplateReferenceList().add(ea);
+   rule "EA_20"
+    	salience 65535
+    	no-loop
+    	when
+    		$person:Person(stateOfResidence==State.WYOMING)
+    		$response:TemplateReferenceResponse()
+    	then
+    	    $response.setIncludeFactSheet(false);
+    	    $response.setEnrollmentAuthorized(false);
+    	    $response.setTemplateReferenceList(Collections.unmodifiableList(Collections.emptyList()));
+    	    update($response);
+    end
 
-end
+   rule "EA_21"
+    	salience 65535
+    	no-loop
+    	when
+    		$person:Person(stateOfResidence==State.ALABAMA)
+    		$response:TemplateReferenceResponse()
 
-rule "2018_LON_EA_Extended Payment"
-    when
-        inquiry:TemplateReferenceInquiry(request!=null && request.programFormat==ProgramFormat.IMMERSIVE && request.metro==Metro.LONDON && request.paymentOption==PaymentOption.EXTENDED)
-    then
-        TemplateReference ea = new TemplateReference();
-        ea.setTemplate("078a1ec1-54aa-4dc7-a888-d8e8a23c8b35,2018_LON_EA_Extended Payment");
-        inquiry.getResponse().getTemplateReferenceList().add(ea);
-end
+    	then
+    	    $response.setIncludeFactSheet(false);
+    	    $response.setEnrollmentAuthorized(false);
+    	    $response.setTemplateReferenceList(Collections.unmodifiableList(Collections.emptyList()));
+    	    update($response);
+    end
+   rule "EA_22"
+    	salience 65535
+    	no-loop
+    	when
+    		$person:Person(stateOfResidence==State.OKLAHOMA)
+    		$response:TemplateReferenceResponse()
+    	then
+    	    $response.setIncludeFactSheet(false);
+    	    $response.setEnrollmentAuthorized(false);
+    	    $response.setTemplateReferenceList(Collections.unmodifiableList(Collections.emptyList()));
+    	    update($response);
+    end
+    rule "EA_23"
+        	salience 65535
+        	no-loop
+        	when
+        		$person:Person(stateOfResidence==State.NEBRASKA)
+        		$response:TemplateReferenceResponse()
+
+        	then
+        	    $response.setIncludeFactSheet(false);
+        	    $response.setEnrollmentAuthorized(false);
+        	    $response.setTemplateReferenceList(Collections.unmodifiableList(Collections.emptyList()));
+        	    update($response);
+    end
+rule "EA_24"
+        salience 65535
+        no-loop
+        when
+        	$person:Person(stateOfResidence==State.WISCONSIN)
+        	$response:TemplateReferenceResponse()
+        then
+            $response.setIncludeFactSheet(false);
+           	$response.setEnrollmentAuthorized(false);
+         	$response.setTemplateReferenceList(Collections.unmodifiableList(Collections.emptyList()));
+        	update($response);
+        end
+
+rule "EA_25_1"
+    	salience 65534
+    	no-loop
+    	when
+    	    $instance:Instance(programFormat.equals("CIRCUIT"))
+    		$response:TemplateReferenceResponse(enrollmentAuthorized==true)
+    	then
+    	    ArrayList<TemplateReference> templateReferenceList = new ArrayList<>();
+    	    templateReferenceList.add(new TemplateReference("CA_Circuits_EA_05.30.2018"));
+    	    $response.setIncludeFactSheet(true);
+    	    $response.setEnrollmentAuthorized(true);
+    	    $response.setTemplateReferenceList(Collections.synchronizedList(templateReferenceList));
+    	    update($response);
+        end
+rule "EA_25_2"
+    	salience 65534
+    	no-loop
+    	when
+    	    $instance:Instance(programFormat.equals("CIRCUIT"))
+    		$response:TemplateReferenceResponse(enrollmentAuthorized==null)
+    	then
+    	    ArrayList<TemplateReference> templateReferenceList = new ArrayList<>();
+    	    templateReferenceList.add(new TemplateReference("CA_Circuits_EA_05.30.2018"));
+    	    $response.setIncludeFactSheet(true);
+    	    $response.setEnrollmentAuthorized(true);
+    	    $response.setTemplateReferenceList(Collections.synchronizedList(templateReferenceList));
+    	    update($response);
+        end
+
+rule "FS_42"
+	salience 65533
+	no-loop
+	when
+	    $instance:Instance(programAbbreviation.equals("DAC"))
+        $response:TemplateReferenceResponse(includeFactSheet==true)
+	then
+	    $response.getTemplateReferenceList().add(new TemplateReference("CA_School Fact Sheet_DAC"));
+		update($response);
+    end
+
+rule "FS_43"
+	salience 65533
+	no-loop
+	when
+	    $instance:Instance(programAbbreviation.equals("DMC"))
+        $response:TemplateReferenceResponse(includeFactSheet==true)
+	then
+	    $response.getTemplateReferenceList().add(new TemplateReference("CA_School Fact Sheet_DMC"));
+		update($response);
+    end
+
+rule "FS_44"
+	salience 65533
+	no-loop
+	when
+	    $instance:Instance(programAbbreviation.equals("JSC"))
+        $response:TemplateReferenceResponse(includeFactSheet==true)
+	then
+	    $response.getTemplateReferenceList().add(new TemplateReference("CA_School Fact Sheet_JSC"));
+		update($response);
+    end
+
+rule "FS_45"
+	salience 65533
+	no-loop
+	when
+	    $instance:Instance(programAbbreviation.equals("UXC"))
+        $response:TemplateReferenceResponse(includeFactSheet==true)
+	then
+	    $response.getTemplateReferenceList().add(new TemplateReference("CA_School Fact Sheet_UXC"));
+		update($response);
+    end
+
+rule "FS_46"
+	salience 65533
+	no-loop
+	when
+	    $instance:Instance(programAbbreviation.equals("HCD"))
+        $response:TemplateReferenceResponse(includeFactSheet==true)
+	then
+	    $response.getTemplateReferenceList().add(new TemplateReference("CA_School Fact Sheet_HCD"));
+		update($response);
+    end

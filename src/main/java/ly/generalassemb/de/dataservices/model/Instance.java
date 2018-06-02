@@ -1,13 +1,16 @@
-package ly.generalassemb.de.dataservices;
+package ly.generalassemb.de.dataservices.model;
 
-public class InstanceCacheItem {
-    String inventoryManagementSystem;
-    String stockKeepingUnit;
-    String listCurrency;
-    Double listPrice;
-    String metroName;
-    String programFormat;
-    String programAbbreviation;
+public class Instance {
+    private String inventoryManagementSystem;
+    private String stockKeepingUnit;
+    private String listCurrency;
+    private Double listPrice;
+    private String metroName;
+    private String programFormat;
+    private String programAbbreviation;
+
+    public Instance() {
+    }
 
     public String getInventoryManagementSystem() {
         return inventoryManagementSystem;

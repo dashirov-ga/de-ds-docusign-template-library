@@ -26,4 +26,6 @@ public class TemplateReferenceInquiry {
     public UUID getInquiryId() {
         return inquiryId;
     }
+
+
 }

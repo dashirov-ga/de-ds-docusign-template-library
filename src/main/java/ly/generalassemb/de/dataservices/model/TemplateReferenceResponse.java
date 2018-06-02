@@ -8,6 +8,24 @@ import java.util.List;
  */
 public class TemplateReferenceResponse {
     private List<TemplateReference> templateReferenceList = new ArrayList<>();
+    private Boolean enrollmentAuthorized;
+    private Boolean includeFactSheet;
+
+    public Boolean getEnrollmentAuthorized() {
+        return enrollmentAuthorized;
+    }
+
+    public void setEnrollmentAuthorized(Boolean enrollmentAuthorized) {
+        this.enrollmentAuthorized = enrollmentAuthorized;
+    }
+
+    public Boolean getIncludeFactSheet() {
+        return includeFactSheet;
+    }
+
+    public void setIncludeFactSheet(Boolean includeFactSheet) {
+        this.includeFactSheet = includeFactSheet;
+    }
 
     public List<TemplateReference> getTemplateReferenceList() {
         return templateReferenceList;
